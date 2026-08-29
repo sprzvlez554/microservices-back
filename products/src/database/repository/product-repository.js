@@ -2,6 +2,7 @@ const { ProductModel } = require('../models');
 const { NotFoundError } = require('../../utils/app-errors');
 
 class ProductRepository {
+
     async FindAll() {
         return ProductModel.find({});
     }
@@ -14,6 +15,11 @@ class ProductRepository {
         }
 
         return product;
+    }
+
+    async CreateProduct(productData) {
+        const product = new ProductModel(productData);
+        return await product.save();
     }
 }
 

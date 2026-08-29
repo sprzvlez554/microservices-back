@@ -1,0 +1,22 @@
+services:
+
+  shopping:
+    build: .
+    container_name: shopping
+    ports:
+      - "8004:8004"
+    environment:
+      - DB_URL=mongodb://shopping-db:27017/shopping
+    depends_on:
+      - shopping-db
+
+  shopping-db:
+    image: mongo:7
+    container_name: shopping-db
+    ports:
+      - "27019:27017"
+    volumes:
+      - shopping-data:/data/db
+
+volumes:
+  shopping-data:

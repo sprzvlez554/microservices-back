@@ -1,0 +1,22 @@
+services:
+
+  customers:
+    build: .
+    container_name: customers
+    ports:
+      - "8003:8003"
+    environment:
+      - DB_URL=mongodb://customers-db:27017/customers
+    depends_on:
+      - customers-db
+
+  customers-db:
+    image: mongo:7
+    container_name: customers-db
+    ports:
+      - "27018:27017"
+    volumes:
+      - customers-data:/data/db
+
+volumes:
+  customers-data:

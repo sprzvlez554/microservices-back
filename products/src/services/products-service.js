@@ -20,10 +20,22 @@ class ProductsService {
     async GetProductById(id) {
         try {
             const product = await this.repository.FindById(id);
+
             return FormateData(product);
         } catch (err) {
             if (err instanceof APIError) throw err;
+
             throw new APIError('GetProductByIdError', 500, err.message);
+        }
+    }
+
+    async CreateProduct(productData) {
+        try {
+            const product = await this.repository.CreateProduct(productData);
+
+            return FormateData(product);
+        } catch (err) {
+            throw new APIError('CreateProductError', 500, err.message);
         }
     }
 }

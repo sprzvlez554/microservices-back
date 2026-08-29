@@ -1,39 +1,62 @@
-# Car Sales API — microservicios
+# Microservices Backend + Frontend
 
-Migración del monolito [`backend-mono-api`](../backend-mono-api) a microservicios. Repositorio con fines didácticos: el objetivo es que se vea *cómo* funcionan los microservicios, no solo que funcionen.
+## 1. Descripción del proyecto
+## 2. Arquitectura
+## 3. Estructura del proyecto
+## 4. Servicios y puertos
 
-## Modelo de organización
+### Customers
+### Products
+### Shopping
+### API Gateway
+### Frontend
 
-Un solo repositorio, pero **cada servicio es completamente autónomo**: su propio `package.json`, su `node_modules`, su `Dockerfile`, su `docker-compose.yml` y **su propia base de datos**. No hay npm workspaces ni carpeta `shared/` — cada carpeta se comporta como si fuera un repositorio aparte, para que las fronteras entre servicios sean reales y no una convención que se pueda romper por accidente.
+## 5. Tecnologías utilizadas
+## 6. MongoDB
+## 7. Variables de entorno
+## 8. Docker
+## 9. Ejecutar el proyecto
+## 10. Customers API
 
-El razonamiento completo está en [`docs/00-modelo-de-organizacion.md`](./docs/00-modelo-de-organizacion.md).
+### GET
+### POST
+### PUT
+### DELETE
+### Signup
+### Login
+### Profile
 
-## Servicios
+## 11. Products API
 
-| Servicio | Puerto | Base de datos | Estado |
-| --- | --- | --- | --- |
-| [`gateway`](./gateway) | 8000 | — | ⬜ pendiente |
-| [`customers`](./customers) | 8001 | `customers-db` | ✅ migrado |
-| [`products`](./products) | 8002 | `products-db` | ✅ migrado |
-| [`shopping`](./shopping) | 8003 | `shopping-db` | ⬜ pendiente |
+### GET
+### POST
+### PUT
+### DELETE
 
-## Levantar un servicio solo
+## 12. Shopping API
 
-Cada servicio es autosuficiente. No hace falta nada del resto del repositorio:
+### GET
+### POST
+### PUT
+### DELETE
 
-```bash
-cd products
-docker compose up --build
-docker compose exec products npm run seed
-curl -s localhost:8002/products | jq '{total: (.products|length), categories}'
-```
+## 13. API Gateway
 
-Sin Docker, con un Mongo local:
+### Customers
+### Products
+### Shopping
 
-```bash
-cd products
-npm install
-cp .env.example .env
-npm run seed
-npm start
-```
+## 14. Frontend
+
+### Vite
+### Axios
+### Redux
+### Autenticación
+
+## 15. Seeds
+## 16. Pruebas con CURL
+## 17. Pruebas con Postman
+## 18. Flujo de autenticación
+## 19. Errores comunes
+## 20. Git y GitHub
+## 21. Comandos rápidos
